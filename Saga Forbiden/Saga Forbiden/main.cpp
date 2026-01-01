@@ -20,13 +20,7 @@ int main() {
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
 
-    if (!SDL_CreateWindowAndRenderer(
-        "AeroBlade",
-        1280,
-        720,
-        SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY,
-        &window,
-        &renderer)) {
+    if (!SDL_CreateWindowAndRenderer("AeroBlade", 1280, 720, SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY, &window, &renderer)) {
         std::cerr << "[ERROR] SDL_CreateWindowAndRenderer failed: " << SDL_GetError() << "\n";
         TTF_Quit();
         SDL_Quit();
@@ -54,11 +48,25 @@ int main() {
 
 
     bool running = true;
+    bool isFullscreen = false;
     SDL_Event e;
     while (running) {
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_EVENT_QUIT) {
                 running = false;
+            }
+
+            if (e.type == SDL_EVENT_KEY_DOWN) {
+                if (e.key.key == SDLK_F11) {
+                    isFullscreen = !isFullscreen;
+                    if (!SDL_SetWindowFullscreen(window, isFullscreen)) {
+                        std::cerr << "[ERROR] SDL_SetWindowFullscreen failed: " << SDL_GetError() << "\n";
+                        isFullscreen = !isFullscreen;
+                    }
+                    else {
+                        SDL_SyncWindow(window);
+                    }
+                }
             }
         }
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
