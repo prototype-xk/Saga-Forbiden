@@ -17,9 +17,9 @@ Sortie sur Steam prévue avant le **31 décembre 2026**.
 - [X] Installation SDL3 (version 3.2.26)
 - [ ] Structure de projet (src, include, assets)
 - [X] Initialisation fenêtre et renderer SDL
-- [ ] Gestion des erreurs SDL
-- [ ] Résolution variable selon taille fenêtre
-- [ ] Fenêtre redimensionnable
+- [X] Gestion des erreurs SDL
+- [X] Résolution variable selon taille fenêtre
+- [X] Fenêtre redimensionnable
 - [ ] Mode plein écran / fenêtré
 
 **Boucle de Jeu**
