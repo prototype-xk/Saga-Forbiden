@@ -20,7 +20,7 @@ Sortie sur Steam prévue avant le **31 décembre 2026**.
 - [X] Gestion des erreurs SDL
 - [X] Résolution variable selon taille fenêtre
 - [X] Fenêtre redimensionnable
-- [ ] Mode plein écran / fenêtré
+- [X] Mode plein écran / fenêtré
 
 **Boucle de Jeu**
 - [ ] Boucle principale (game loop)
