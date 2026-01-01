@@ -50,8 +50,8 @@ int main() {
 
     int screenWidth = windowWidth;
     int screenHeight = windowHeight;
-    std::cout << "[INFO] Game configured for resolution: "
-        << screenWidth << "x" << screenHeight << "\n";
+    std::cout << "[INFO] Game configured for resolution: " << screenWidth << "x" << screenHeight << "\n";
+
 
     bool running = true;
     SDL_Event e;
@@ -61,12 +61,10 @@ int main() {
                 running = false;
             }
         }
-
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
     }
-
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     TTF_Quit();
