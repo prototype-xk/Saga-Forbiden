@@ -49,15 +49,6 @@ Saga-Forbidden/
 
 ---
 
-## 🛠️ Stack technique
-
-- **Langage** : C++17
-- **Framework** : SDL3 (SDL3, SDL3_image, SDL3_ttf)
-- **IDE** : Visual Studio
-- **Plateforme cible** : Windows (d'autres plateformes possibles plus tard)
-
----
-
 ## 🗺️ Roadmap Complète
 
 ### 🔴 Phase 1 : Fondations Techniques - Priorité Critique
