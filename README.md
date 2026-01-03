@@ -64,7 +64,7 @@ Saga-Forbidden/
 
 **Configuration & Initialisation**
 - [X] Installation SDL3 (version 3.2.26)
-- [ ] Structure de projet (src, include, assets)
+- [X] Structure de projet (src, include, assets)
 - [X] Initialisation fenêtre et renderer SDL
 - [X] Gestion des erreurs SDL
 - [X] Résolution variable selon taille fenêtre
