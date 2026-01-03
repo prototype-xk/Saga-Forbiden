@@ -5,6 +5,8 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <iostream>
 
+#include "../../include/Core/Button.h"
+
 class Application {
 public :
 	bool SetupApp();
