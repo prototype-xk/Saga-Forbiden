@@ -19,7 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Application.cpp" />
+    <ClCompile Include="src\Entities\Player.cpp" />
+    <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Core\Application.h" />
+    <ClInclude Include="include\Entities\Player.h" />
+    <ClInclude Include="include\Game\Game.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <!-- Change ce GUID si tu veux, sinon garde celui de ton projet actuel -->
