@@ -1,13 +1,62 @@
-# 🎮 Saga Forbidden
+🎮 Saga Forbidden
 
 Un RPG 2D solo mêlant plusieurs univers inspirés de différents jeux vidéo. Explorez des dimensions uniques, combattez des ennemis et boss, gérez votre inventaire, craftez des objets et accomplissez des quêtes dans un monde riche et immersif.
 
 ![Status](https://img.shields.io/badge/status-en%20développement-yellow)
-![SDL3](https://img.shields.io/badge/SDL3-3.2.26-blue)
+![SQL3](https://img.shields.io/badge/SQL3-3.2.26-blue)
 ![C++](https://img.shields.io/badge/C++-17-00599C?logo=cplusplus)
 
+---
+
 ## 🎯 Objectif
+
 Sortie sur Steam prévue avant le **31 décembre 2026**.
+
+---
+
+## 🧩 Description du jeu
+
+- **RPG 2D solo** avec vue top-down (ou side-scrolling, à préciser si tu veux).
+- **Combats** contre des ennemis et des boss, avec gestion de points de vie, esquives et attaques.
+- **Système d'inventaire**, loot, craft, équipement et commerce avec PNJ.
+- **Univers** composé de plusieurs dimensions aux règles et ambiances différentes.
+
+---
+
+## 🗂️ Structure du projet
+
+```text
+Saga-Forbidden/
+└─ Saga-Forbidden/                 # Dossier du projet Visual Studio
+   ├─ external/
+   │   ├─ include/                 # Headers des dépendances (SDL3, SDL3_image, SDL3_ttf)
+   │   └─ lib/                     # .lib / .dll / .pdb des dépendances
+   ├─ Sage-Forbidden/              # Code du jeu
+   │   ├─ assets/                  # Ressources (textures, sons, polices, maps...)
+   │   ├─ include/                 # Headers du jeu
+   │   │   ├─ Core/                # Application, gestion SDL, etc.
+   │   │   ├─ Game/                # Boucle de jeu, états, logique globale
+   │   │   └─ Entities/            # Joueur, ennemis, PNJ, etc.
+   │   ├─ src/                     # Implémentations C++
+   │   │   ├─ Core/
+   │   │   ├─ Game/
+   │   │   ├─ Entities/
+   │   │   └─ main.cpp             # Point d'entrée du jeu
+   │   └─ x64/                     # Binaires générés par Visual Studio (Debug/Release)
+   ├─ Saga-Forbidden.sln           # Solution Visual Studio
+   └─ x64/                         # Autres répertoires de build (selon la config VS)
+```
+
+---
+
+## 🛠️ Stack technique
+
+- **Langage** : C++17
+- **Framework** : SDL3 (SDL3, SDL3_image, SDL3_ttf)
+- **IDE** : Visual Studio
+- **Plateforme cible** : Windows (d'autres plateformes possibles plus tard)
+
+---
 
 ## 🗺️ Roadmap
 
@@ -66,6 +115,17 @@ Sortie sur Steam prévue avant le **31 décembre 2026**.
 
 ---
 
-**Statut actuel** : 🚧 Phase 1 - Janvier 2026
+## 🚧 Statut
 
-👤 **Développé par** : Prototype - [@prototype-xk](https://github.com/prototype-xk)
+**Statut actuel** : Phase 1 – Prototype technique (Janvier 2026)
+
+---
+
+## 👤 Auteur
+
+**Développé par** : Prototype  
+**GitHub** : [@prototype-xk](https://github.com/prototype-xk)
+
+---
+
+> Si tu veux, tu peux aussi ajouter plus tard une section « Installation / Build » avec : version de Visual Studio, config x64, où copier les DLL SDL, etc., quand ton projet sera un peu plus stable.
