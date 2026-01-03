@@ -16,7 +16,7 @@ Sortie sur Steam prévue avant le **31 décembre 2026**.
 
 ## 🧩 Description du jeu
 
-- **RPG 2D solo** avec vue top-down (ou side-scrolling, à préciser si tu veux).
+- **RPG 2D solo** avec vue top-down.
 - **Combats** contre des ennemis et des boss, avec gestion de points de vie, esquives et attaques.
 - **Système d'inventaire**, loot, craft, équipement et commerce avec PNJ.
 - **Univers** composé de plusieurs dimensions aux règles et ambiances différentes.
