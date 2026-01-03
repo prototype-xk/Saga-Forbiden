@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <!-- Change ce GUID si tu veux, sinon garde celui de ton projet actuel -->
     <ProjectGuid>{2B1E3BAD-13FD-482C-A5EF-C289CDF5D1E0}</ProjectGuid>
@@ -91,9 +94,6 @@
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <!-- Fichiers du projet -->
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <!-- Paramètres C/C++ : includes SDL3 -->
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
