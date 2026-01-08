@@ -78,7 +78,7 @@ void renderButton(SDL_Renderer* renderer, Button* btn, TTF_Font* font) {
 
     SDL_SetRenderDrawColor(renderer, 40, 40, 40, 255);
     SDL_RenderRect(renderer, &btn->rect);
-
+    
     if (font && !btn->text.empty()) {
         SDL_Surface* textSurface = TTF_RenderText_Blended(font, btn->text.c_str(), 0, btn->textColor);
         if (textSurface) {
