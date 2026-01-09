@@ -2,6 +2,8 @@
 
 Un RPG 2D solo mêlant plusieurs univers inspirés de différents jeux vidéo. Explorez des dimensions uniques, combattez des ennemis et boss, gérez votre inventaire, craftez des objets et accomplissez des quêtes dans un monde riche et immersif.
 
+Objectif : Retrouver les constructeur
+
 ![Status](https://img.shields.io/badge/status-en%20développement-yellow)
 ![SQL3](https://img.shields.io/badge/SQL3-3.2.26-blue)
 ![C++](https://img.shields.io/badge/C++-17-00599C?logo=cplusplus)
