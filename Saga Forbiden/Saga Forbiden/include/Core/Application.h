@@ -8,7 +8,7 @@
 #include "../../include/Core/Button.h"
 
 class Application {
-public :
+public:
 	bool SetupApp();
 protected:
 private:

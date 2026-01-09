@@ -4,8 +4,8 @@
 #include "../include/Game/Game.h"
 
 int main() {
-    Application Setup;
-    Setup.SetupApp();
+	Application Setup;
+	Setup.SetupApp();
 
-    return 0;
+	return 0;
 }

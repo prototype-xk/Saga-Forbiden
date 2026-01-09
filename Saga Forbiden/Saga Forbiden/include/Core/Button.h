@@ -6,14 +6,14 @@
 #include <stdbool.h>
 
 struct Button {
-    SDL_FRect rect;
-    std::string text;
-    SDL_Color color;
-    SDL_Color hoverColor;
-    SDL_Color textColor;
-    bool isHovered;
-    bool isPressed;
-    bool wasPressedOn;
+	SDL_FRect rect;
+	std::string text;
+	SDL_Color color;
+	SDL_Color hoverColor;
+	SDL_Color textColor;
+	bool isHovered;
+	bool isPressed;
+	bool wasPressedOn;
 };
 
 Button createButton(float x, float y, float w, float h, const char* text);
