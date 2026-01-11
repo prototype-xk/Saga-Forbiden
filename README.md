@@ -567,7 +567,3 @@ Phase 9
 
 **Développé par** : Prototype  
 **GitHub** : [@prototype-xk](https://github.com/prototype-xk)
-
----
-
-> Si tu veux, tu peux aussi ajouter plus tard une section « Installation / Build » avec : version de Visual Studio, config x64, où copier les DLL SDL, etc., quand ton projet sera un peu plus stable.
