@@ -1,97 +1,133 @@
-#include "../../include/Core/Button.h"
+#include "include/Core/Button.h"
 
-Button createButton(float x, float y, float w, float h, const char* text) {
-	Button btn;
-
-	btn.rect.x = x;
-	btn.rect.y = y;
-	btn.rect.w = w;
-	btn.rect.h = h;
-
-	btn.text = text;
-
-	btn.color.r = 70;
-	btn.color.g = 130;
-	btn.color.b = 180;
-	btn.color.a = 255;
-
-	btn.hoverColor.r = 100;
-	btn.hoverColor.g = 149;
-	btn.hoverColor.b = 237;
-	btn.hoverColor.a = 255;
-
-	btn.textColor.r = 255;
-	btn.textColor.g = 255;
-	btn.textColor.b = 255;
-	btn.textColor.a = 255;
-
-	btn.isHovered = false;
-	btn.isPressed = false;
-	btn.wasPressedOn = false;
-
-	return btn;
+Button::Button(SDL_Renderer* renderer, SDL_Texture* backgroundtexture, TTF_Font* font, const std::string& text, float x, float y, float w, float h)
+	: backgroundTexture(backgroundtexture)
+{
+	rect = { x, y, w, h };
+	backgroundColor = BTN_BACKGROUND_COLOR;
+	createTextTexture(renderer, font, text, COLOR_WHITE);
 }
 
-bool isPointInButton(Button* btn, float x, float y) {
-	return x >= btn->rect.x && x <= btn->rect.x + btn->rect.w &&
-		y >= btn->rect.y && y <= btn->rect.y + btn->rect.h;
+Button::Button(SDL_Renderer* renderer, TTF_Font* font, const std::string& text, float x, float y, float w, float h)
+{
+	rect = { x, y, w, h };
+	backgroundTexture = nullptr;
+	backgroundColor = BTN_BACKGROUND_COLOR;
+	createTextTexture(renderer, font, text,	COLOR_WHITE);
 }
 
-void handleButtonEvent(Button* btn, SDL_Event* e) {
+void Button::createTextTexture(SDL_Renderer* renderer, TTF_Font* font, const std::string& text, Uint32 textColor)
+{
+	if (!renderer || !font) {
+		std::cerr << "[ERROR] Button::createTextTexture - renderer or font is nullptr\n";
+		return;
+	}
+
+	if (textTexture) {
+		SDL_DestroyTexture(textTexture);
+		textTexture = nullptr;
+	}
+
+	SDL_Color color = SDL_ColorFromRGBA(textColor);
+	SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(),0 , color);
+	if (!surface) {
+		std::cerr << "[ERROR] Button::createTextTexture - TTF_RenderText_Blended failed: " << SDL_GetError() << "\n";
+		return;
+	}
+
+	textTexture = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_DestroySurface(surface);
+	if (!textTexture) {
+		std::cerr << "[ERROR] Button::createTextTexture - SDL_CreateTextureFromSurface failed: " << SDL_GetError() << "\n";
+		return;
+	}
+}
+
+void Button::HandleEvent(SDL_Event* e)
+{
+	if (!e) return;
+
+	clicked = false;
+
 	if (e->type == SDL_EVENT_MOUSE_MOTION) {
-		float x = e->motion.x;
-		float y = e->motion.y;
-		btn->isHovered = isPointInButton(btn, x, y);
+		float mx = e->motion.x;
+		float my = e->motion.y;
+
+		ishovered =
+			mx >= rect.x && mx <= rect.x + rect.w &&
+			my >= rect.y && my <= rect.y + rect.h;
 	}
-	else if (e->type == SDL_EVENT_MOUSE_BUTTON_DOWN && e->button.button == SDL_BUTTON_LEFT) {
-		float x = e->button.x;
-		float y = e->button.y;
-		if (isPointInButton(btn, x, y)) {
-			btn->isPressed = true;
-			btn->wasPressedOn = true;
+	else if (e->type == SDL_EVENT_MOUSE_BUTTON_DOWN &&
+		e->button.button == SDL_BUTTON_LEFT)
+	{
+		float mx = e->button.x;
+		float my = e->button.y;
+
+		bool inside =
+			mx >= rect.x && mx <= rect.x + rect.w &&
+			my >= rect.y && my <= rect.y + rect.h;
+
+		if (inside) {
+			ispressed = true;
+			wasPressedOn = true;
 		}
 	}
-	else if (e->type == SDL_EVENT_MOUSE_BUTTON_UP && e->button.button == SDL_BUTTON_LEFT) {
-		btn->isPressed = false;
+	else if (e->type == SDL_EVENT_MOUSE_BUTTON_UP &&
+		e->button.button == SDL_BUTTON_LEFT)
+	{
+		float mx = e->button.x;
+		float my = e->button.y;
+
+		bool inside =
+			mx >= rect.x && mx <= rect.x + rect.w &&
+			my >= rect.y && my <= rect.y + rect.h;
+
+		if (wasPressedOn && inside) {
+			clicked = true;
+		}
+
+		ispressed = false;
+		wasPressedOn = false;
 	}
 }
 
-bool isButtonClicked(Button* btn, SDL_Event* e) {
-	if (e->type == SDL_EVENT_MOUSE_BUTTON_UP && e->button.button == SDL_BUTTON_LEFT) {
-		float x = e->button.x;
-		float y = e->button.y;
 
-		if (btn->wasPressedOn && isPointInButton(btn, x, y)) {
-			btn->wasPressedOn = false;
-			return true;
-		}
-		btn->wasPressedOn = false;
+
+void Button::Render(SDL_Renderer* renderer){
+	if (!renderer) return;
+	SDL_FRect drawRect = rect;
+	if (ishovered) {
+		drawRect.y -= hoverOffset;
 	}
-	return false;
+	if (backgroundTexture) {
+		SDL_RenderTexture(renderer, backgroundTexture, nullptr, &drawRect);
+	}
+	else {
+		SDL_SetRenderDrawColorRGBA(renderer, backgroundColor);
+		SDL_RenderFillRect(renderer, &drawRect);
+	}
+
+	if (textTexture) {
+		float tw = 0.f;
+		float th = 0.f;
+		if (SDL_GetTextureSize(textTexture, &tw, &th)) {
+			SDL_FRect textDst;
+			textDst.w = tw;
+			textDst.h = th;
+			textDst.x = drawRect.x + (drawRect.w - textDst.w) / 2;
+			textDst.y = drawRect.y + (drawRect.h - textDst.h) / 2;
+
+			SDL_RenderTexture(renderer, textTexture, nullptr, &textDst);
+		}
+	}
 }
 
-void renderButton(SDL_Renderer* renderer, Button* btn, TTF_Font* font) {
-	SDL_Color currentColor = btn->isHovered ? btn->hoverColor : btn->color;
+void Button::setPosition(float x, float y) {
+	rect.x = x;
+	rect.y = y;
+}
 
-	SDL_SetRenderDrawColor(renderer, currentColor.r, currentColor.g, currentColor.b, currentColor.a);
-	SDL_RenderFillRect(renderer, &btn->rect);
-
-	SDL_SetRenderDrawColor(renderer, 40, 40, 40, 255);
-	SDL_RenderRect(renderer, &btn->rect);
-
-	if (font && !btn->text.empty()) {
-		SDL_Surface* textSurface = TTF_RenderText_Blended(font, btn->text.c_str(), 0, btn->textColor);
-		if (textSurface) {
-			SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-			if (textTexture) {
-				float textX = btn->rect.x + (btn->rect.w - textSurface->w) / 2;
-				float textY = btn->rect.y + (btn->rect.h - textSurface->h) / 2;
-
-				SDL_FRect textRect = { textX,textY,(float)textSurface->w, (float)textSurface->h };
-				SDL_RenderTexture(renderer, textTexture, nullptr, &textRect);
-				SDL_DestroyTexture(textTexture);
-			}
-			SDL_DestroySurface(textSurface);
-		}
-	}
+void Button::setSize(float w, float h) {
+	rect.w = w;
+	rect.h = h;
 }

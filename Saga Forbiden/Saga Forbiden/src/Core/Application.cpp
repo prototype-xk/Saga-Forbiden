@@ -1,5 +1,8 @@
-#include "../../include/Core/Application.h"
-#include "../../include/Core/Button.h"
+#include "include/Core/Application.h"
+#include "include/Core/Button.h"
+
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
 
 bool Application::SetupApp() {
 	/*Initialisation de SDL*/
@@ -20,7 +23,7 @@ bool Application::SetupApp() {
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	/*Creation de la fenetre*/
-	if (!SDL_CreateWindowAndRenderer("AeroBlade", 1280, 720, SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY, &window, &renderer)) {
+	if (!SDL_CreateWindowAndRenderer("AeroBlade", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY, &window, &renderer)) {
 		std::cerr << "[ERROR] SDL_CreateWindowAndRenderer failed: " << SDL_GetError() << "\n";
 		TTF_Quit();
 		SDL_Quit();
@@ -63,7 +66,7 @@ bool Application::SetupApp() {
 	float btnX = (screenWidth - btnW) / 2.0f;
 	float btnY = (screenHeight - btnH) / 2.0f;
 
-	Button debugButton = createButton(btnX, btnY, btnW, btnH, "DEBUG");
+	Button debugButton(renderer, font, "DEBUG", btnX, btnY, btnW, btnH);
 
 	bool running = true;
 	bool isFullscreen = false;
@@ -88,9 +91,8 @@ bool Application::SetupApp() {
 				}
 			}
 
-			handleButtonEvent(&debugButton, &e);
-
-			if (isButtonClicked(&debugButton, &e)) {
+			debugButton.HandleEvent(&e);
+			if (debugButton.WasClicked()) {
 				std::cerr << "[DEBUG] DEBUG button clicked\n";
 			}
 		}
@@ -98,7 +100,7 @@ bool Application::SetupApp() {
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderClear(renderer);
 
-		renderButton(renderer, &debugButton, font);
+		debugButton.Render(renderer);
 
 		SDL_RenderPresent(renderer);
 	}

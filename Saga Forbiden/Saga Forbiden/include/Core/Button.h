@@ -1,23 +1,39 @@
 #pragma once
 
 #include <SDL3/SDL.h>
-#include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3_TTF/SDL_ttf.h>
 #include <string>
-#include <stdbool.h>
+#include <iostream>
+#include "include/Utils/Color.h"
 
-struct Button {
+class Button {
+public:
+	Button(SDL_Renderer* renderer, SDL_Texture* backgroundtexture, TTF_Font* font, const std::string& text, float x, float y, float w, float h);
+	Button(SDL_Renderer* renderer, TTF_Font* font, const std::string& text, float x, float y, float w, float h);
+
+	void HandleEvent(SDL_Event* e);
+	void Render(SDL_Renderer* renderer);
+
+	bool IsHovered() const { return ishovered; }
+	bool IsPressed() const { return ispressed; }
+	bool WasClicked() const { return clicked; }
+
+	void setPosition(float x, float y);
+	void setSize(float w, float h);
+
+private:
+	void createTextTexture(SDL_Renderer* renderer, TTF_Font* font, const std::string& text, Uint32 textColor);
+
 	SDL_FRect rect;
-	std::string text;
-	SDL_Color color;
-	SDL_Color hoverColor;
-	SDL_Color textColor;
-	bool isHovered;
-	bool isPressed;
-	bool wasPressedOn;
-};
+	float hoverOffset = 3.0f;
 
-Button createButton(float x, float y, float w, float h, const char* text);
-bool isPointInButton(Button* btn, float x, float y);
-void handleButtonEvent(Button* btn, SDL_Event* e);
-bool isButtonClicked(Button* btn, SDL_Event* e);
-void renderButton(SDL_Renderer* renderer, Button* btn, TTF_Font* font);
+	bool ishovered = false;
+	bool ispressed = false;
+	bool wasPressedOn = false;
+	bool clicked = false;
+
+	SDL_Texture* backgroundTexture = nullptr;
+	SDL_Texture* textTexture = nullptr;
+
+	Uint32 backgroundColor = BTN_BACKGROUND_COLOR;
+};

@@ -37,6 +37,15 @@
     <Filter Include="Fichiers sources\Screen">
       <UniqueIdentifier>{cf25c93e-f0e6-467e-831c-1338dbedcf49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Manager">
+      <UniqueIdentifier>{89fb570b-4db3-44e6-9345-397dbef5cf60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Manager">
+      <UniqueIdentifier>{44537e3a-1010-4578-9d4c-609701fb7559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Utils">
+      <UniqueIdentifier>{891cea2a-af3e-4257-91fd-ed8a79f41210}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -54,6 +63,15 @@
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\Manager\AudioManager.cpp">
+      <Filter>Fichiers sources\Core\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Manager\FontManager.cpp">
+      <Filter>Fichiers sources\Core\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Manager\TextureManager.cpp">
+      <Filter>Fichiers sources\Core\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Core\Application.h">
@@ -67,6 +85,18 @@
     </ClInclude>
     <ClInclude Include="include\Core\Button.h">
       <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Core\Manager\AudioManager.h">
+      <Filter>Fichiers d%27en-tête\Core\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Core\Manager\FontManager.h">
+      <Filter>Fichiers d%27en-tête\Core\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Core\Manager\TextureManager.h">
+      <Filter>Fichiers d%27en-tête\Core\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils\Color.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

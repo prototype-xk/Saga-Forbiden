@@ -22,14 +22,21 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\Button.cpp" />
+    <ClCompile Include="src\Core\Manager\AudioManager.cpp" />
+    <ClCompile Include="src\Core\Manager\FontManager.cpp" />
+    <ClCompile Include="src\Core\Manager\TextureManager.cpp" />
     <ClCompile Include="src\Entities\Player.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Core\Application.h" />
     <ClInclude Include="include\Core\Button.h" />
+    <ClInclude Include="include\Core\Manager\AudioManager.h" />
+    <ClInclude Include="include\Core\Manager\FontManager.h" />
+    <ClInclude Include="include\Core\Manager\TextureManager.h" />
     <ClInclude Include="include\Entities\Player.h" />
     <ClInclude Include="include\Game\Game.h" />
+    <ClInclude Include="include\Utils\Color.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <!-- Change ce GUID si tu veux, sinon garde celui de ton projet actuel -->
@@ -143,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)external\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
