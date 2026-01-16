@@ -31,8 +31,24 @@
 *.out
 *.app
 
-\.vs
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build directories
+x64/
+Debug/
+Release/
+[Dd]ebug/
+[Rr]elease/
+
+# Specific paths (si les règles générales ne suffisent pas)
+Saga-Forbidden/x64/
+Saga-Forbidden/Sage-Forbidden/x64/
+
+# Agent files
 AGENTS-fr.md
 AGENTS.md
-/Saga Forbiden/Saga Forbiden/x64/Debug
-/Saga Forbiden/Saga Forbiden/x64
