@@ -98,5 +98,8 @@
     <ClInclude Include="include\Utils\Color.h">
       <Filter>Fichiers d%27en-tête\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="include\Utils\AssetsPaths.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

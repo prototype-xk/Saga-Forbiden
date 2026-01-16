@@ -36,6 +36,7 @@
     <ClInclude Include="include\Core\Manager\TextureManager.h" />
     <ClInclude Include="include\Entities\Player.h" />
     <ClInclude Include="include\Game\Game.h" />
+    <ClInclude Include="include\Utils\AssetsPaths.h" />
     <ClInclude Include="include\Utils\Color.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
