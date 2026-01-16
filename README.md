@@ -40,11 +40,9 @@ Saga-Forbidden/
    │   ├─ src/                     # Implémentations C++
    │   │   ├─ Core/
    │   │   ├─ Game/
-   │   │   ├─ Entities/
-   │   ├─ main.cpp             # Point d'entrée du jeu
-   │   └─ x64/                     # Binaires générés par Visual Studio (Debug/Release)
-   ├─ Saga-Forbidden.sln           # Solution Visual Studio
-   └─ x64/                         # Autres répertoires de build (selon la config VS)
+   │   │   └─ Entities/
+   │   └─ main.cpp             # Point d'entrée du jeu
+   └─ Saga-Forbidden.sln           # Solution Visual Studio
 ```
 
 ---
