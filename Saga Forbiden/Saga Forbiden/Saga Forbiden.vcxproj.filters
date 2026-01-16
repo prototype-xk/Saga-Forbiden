@@ -31,6 +31,12 @@
     <Filter Include="Fichiers d%27en-tête\Entities">
       <UniqueIdentifier>{dcbced29-3e16-446b-a58a-c41cd8dcb81c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Screen">
+      <UniqueIdentifier>{2495c405-8dd1-4844-a3b4-2c23c5d19fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Screen">
+      <UniqueIdentifier>{cf25c93e-f0e6-467e-831c-1338dbedcf49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -60,7 +66,7 @@
       <Filter>Fichiers d%27en-tête\Entities</Filter>
     </ClInclude>
     <ClInclude Include="include\Core\Button.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
